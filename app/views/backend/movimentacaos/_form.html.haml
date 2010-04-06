@@ -1,0 +1,15 @@
+=simple_error_messages_for :movimentacao
+-tab :general do
+    %table.full
+        %tr
+            %td.fixed=human_name_for :movimentacao, :tipo_movimentacao
+            %td=select :movimentacao, :tipo_movimentacao_id, TipoMovimentacao.all.collect{|tm| [tm.nome, tm.id]}
+        %tr
+            %td.fixed=human_name_for :movimentacao, :quantidade
+            %td=text_field :movimentacao, :quantidade
+
+    -box "Observacoes Importantes", "My Subtitle", :collapsible => true, :style => "padding:none", :start => :close do
+        %table.full
+            %tr
+                %td.fixed=human_name_for :movimentacao, :observacao
+                %td=text_area :movimentacao, :observacao

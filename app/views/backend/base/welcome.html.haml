@@ -1,0 +1,6 @@
+=title "Farma Control 344"
+.padding
+    -box "O que você gostaria de fazer?" do
+        %ul
+            %li=link_to_function "Ver Contas de Usuário", "Backend.app.load('/backend/accounts.js')"
+            %li=link_to_function "Criar Conta de Usuário", "Backend.app.load('/backend/accounts/new')"

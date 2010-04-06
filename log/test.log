@@ -1,0 +1,2 @@
+  [4;36;1mAccount Load (0.6ms)[0m   [0;1mSELECT * FROM "accounts" [0m
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT "accounts".id FROM "accounts" WHERE (LOWER("accounts"."email") = 'd.dagostino@lipsiasoft.com' AND "accounts".id <> 1) LIMIT 1[0m

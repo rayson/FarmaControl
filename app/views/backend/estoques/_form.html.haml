@@ -1,0 +1,15 @@
+=simple_error_messages_for :estoque
+-tab :general do
+  %table.full
+    %tr
+      %td.fixed=human_name_for :estoque, :responsavel
+      %td=text_field :estoque, :responsavel
+    %tr
+      %td.fixed=human_name_for :estoque, :quantidade
+      %td=text_field :estoque, :quantidade
+    %tr
+      %td.fixed=human_name_for :estoque, :farmaco
+      %td=open_standard_grid :estoque, :farmaco, :id, :farmaco
+    %tr
+      %td.fixed=human_name_for :estoque, :local
+      %td=select :estoque, :local_id, Local.all.collect{|f| [f.nome, f.id]}

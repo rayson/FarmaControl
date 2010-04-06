@@ -1,0 +1,18 @@
+page.grid do |grid|
+  grid.id "grid-movimentacaos"
+  grid.title list_title_for(Movimentacao)
+  grid.base_path "/backend/movimentacaos"
+  grid.forgery_protection_token request_forgery_protection_token
+  grid.authenticity_token form_authenticity_token
+  grid.tbar  :default
+  grid.sm :checkbox
+  grid.store do |store|
+    store.url "/backend/movimentacaos.json"
+    store.fields @column_store.store_fields
+    # store.sortInfo  :field => "movimentacaos.created_at", :direction => "DESC"
+  end
+  grid.columns do |columns|
+    columns.fields @column_store.column_fields
+  end
+  grid.bbar  :store => grid.get_store, :pageSize => params[:limit], :displayInfo => true
+end

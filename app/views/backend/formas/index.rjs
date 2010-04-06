@@ -1,0 +1,18 @@
+page.grid do |grid|
+  grid.id "grid-formas"
+  grid.title list_title_for(Forma)
+  grid.base_path "/backend/formas"
+  grid.forgery_protection_token request_forgery_protection_token
+  grid.authenticity_token form_authenticity_token
+  grid.tbar  :default
+  grid.sm :checkbox
+  grid.store do |store|
+    store.url "/backend/formas.json"
+    store.fields @column_store.store_fields
+    # store.sortInfo  :field => "formas.created_at", :direction => "DESC"
+  end
+  grid.columns do |columns|
+    columns.fields @column_store.column_fields
+  end
+  grid.bbar  :store => grid.get_store, :pageSize => params[:limit], :displayInfo => true
+end

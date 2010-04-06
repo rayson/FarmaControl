@@ -1,0 +1,13 @@
+=simple_error_messages_for :tipo_movimentacao
+-tab :general do
+  %table.full
+    %tr
+      %td.fixed=human_name_for :tipo_movimentacao, :nome
+      %td=text_field :tipo_movimentacao, :nome
+    %tr
+      %td.fixed=human_name_for :tipo_movimentacao, :origem
+      %td=select(:tipo_movimentacao, :origem_id, Local.all.collect{|l| [l.nome, l.id]},{:include_blank=> true})
+    %tr
+      %td.fixed=human_name_for :tipo_movimentacao, :destino
+      %td=select(:tipo_movimentacao, :destino_id, Local.all.collect{|l| [l.nome, l.id]},{:include_blank=> true})
+  =hidden_field_tag('hidden_save_new', '')

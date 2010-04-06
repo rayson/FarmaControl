@@ -1,0 +1,14 @@
+=simple_error_messages_for :farmaco
+-tab :general do
+  %table.full
+    %tr
+      %td.fixed=human_name_for :farmaco, :farmaco
+      %td=text_field :farmaco, :farmaco
+    %tr
+      %td.fixed=human_name_for :farmaco, :forma
+      %td=select :farmaco, :forma_id, Forma.all.collect{|f| [f.texto, f.id]}
+    %tr
+      %td.fixed=human_name_for :farmaco, :controlado
+      %td=check_box :farmaco, :controlado
+
+
