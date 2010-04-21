@@ -1,12 +1,12 @@
 class Backend::MovimentacaosController < BackendController
 
-  before_filter :get_estoque
+  before_filter :get_farmaco
 
   def index
     params[:limit] ||= 50
     
     @column_store = column_store_for Movimentacao do |cm|
-      cm.add "estoque.farmaco.farmaco", :header=>"Farmaco"
+      cm.add "farmaco.farmaco", :header=>"Farmaco"
       cm.add "tipo_movimentacao.nome", :header=>"Tipo Movimentacao"
       cm.add :quantidade
       cm.add :observacao
@@ -17,18 +17,18 @@ class Backend::MovimentacaosController < BackendController
     respond_to do |format|
       format.js 
       format.json do
-        render :json => @column_store.store_data(params, :joins=>[:estoque, :tipo_movimentacao])
+        render :json => @column_store.store_data(params, :joins=>[:farmaco, :tipo_movimentacao])
       end
     end
   end
 
   
   def new
-    @movimentacao = @estoque.movimentacaos.new
+    @movimentacao = @farmaco.movimentacaos.new
   end
 
   def create
-    @movimentacao = @estoque.movimentacaos.new(params[:movimentacao])
+    @movimentacao = @farmaco.movimentacaos.new(params[:movimentacao])
     if @movimentacao.save
       respond_to do |format|
         format.html { redirect_parent_to(:action => "edit", :id => @movimentacao) }
@@ -65,7 +65,7 @@ class Backend::MovimentacaosController < BackendController
   # Add in your model before_destroy and if the callback returns false, 
   # all the later callbacks and the associated action are cancelled.
   def destroy
-    if @estoque.movimentacaos.find(params[:id]).destroy
+    if Movimentacao.find(params[:id]).destroy
       render :json => { :success => true } 
     else
       render :json => { :success => false, :msg => I18n.t("backend.general.cantDelete") }
@@ -74,7 +74,7 @@ class Backend::MovimentacaosController < BackendController
 
   private
 
-  def get_estoque
-    params[:estoque_id] && (@estoque= Estoque.find(params[:estoque_id]))
+  def get_farmaco
+    params[:farmaco_id] && (@farmaco= Farmaco.find(params[:farmaco_id]))
   end
 end

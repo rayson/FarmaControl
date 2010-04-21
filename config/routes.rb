@@ -3,9 +3,9 @@ ActionController::Routing::Routes.draw do |map|
     backend.resources :tipo_movimentacaos
     backend.resources :movimentacaos
     backend.resources :locals
-    backend.resources :estoques, :has_many=> :movimentacaos
+    backend.resources :estoques
     backend.resources :formas
-    backend.resources :farmacos
+    backend.resources :farmacos, :has_many=> :movimentacaos
     backend.resources :accounts
     backend.resources :sessions
 #    backend.resource :base

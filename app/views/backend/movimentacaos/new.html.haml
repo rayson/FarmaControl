@@ -1,4 +1,4 @@
-=new_title_for(Movimentacao)
--form_for([:backend, @estoque, @movimentacao], :method => :post) do
+=new_title_for("Movimentacao para "+@farmaco.farmaco)
+-form_for([:backend, @farmaco, @movimentacao], :method => :post) do
   =render :partial => "form"
 

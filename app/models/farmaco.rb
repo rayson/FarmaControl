@@ -3,6 +3,7 @@ class Farmaco < ActiveRecord::Base
   #Relations
   belongs_to :forma
   has_many :estoques
+  has_many :movimentacaos
 
 
   #Validations
